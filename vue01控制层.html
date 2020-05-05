@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+	 #one{
+	 	font-size: 30px;
+	 	border: 3px solid red;
+	 }
+			
+			
+			
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--vue提供的功能操作-指令-->
+		<!--{{}}指令,能够识别数据源中的数据 ,还可以输出对象的属性以及函数的返回值-->
+<!--vue.js中提供了完全的js表达式支持-->		
+		<p>{{name}}</p>
+		<span >
+			{{hobby[1]}}
+		</span>
+		<p>{{getScore()}}</p>
+		<p>{{getA(6)}}</p>
+		<p>{{getB("坤儿")}}</p>
+		<p>{{5+9}} </p>
+		<p>{{5>9}}</p>
+		<p>{{10>9}}</p>
+		<p>{{OK ? "晨曦" : "亚强" }}</p>
+		<p>{{'OK' ? "晨曦" : "亚强" }}</p>
+	<!--vue指令:把vue实例中的属性绘制(渲染到标签中)-->
+	<!--v-text 指令:绘制文本,类似于innertext-->
+	<p v-text="name"></p>
+	<p v-text="getB('少伟')"></p>
+	<p v-text="'age'"></p>
+	<p v-text="baidu"></p>
+	<!--v-html 指令:绘制文本,,元素,以及注释节点,类似于innerHTML-->
+	<p v-html="baidu"></p>
+	<!--vue中的属性绑定指令 v-bind:属性名 -->
+	<p id="one">俊恒</p>
+	<p v-bind:id="a">银辉</p>
+	<p v-text="sex"></p>
+	<input type="text"  v-bind:value="name" />
+	<!--v-bind可简写成: -->
+	<input type="text"  :value="name" />
+<!--事件绑定指令:v-on:事件名 可以简写成@事件名-->
+	<p :id="a" v-on:click="dianji()">姣姐</p>
+	
+	<button @click="isT = !isT">选择</button>
+	<input type="checkbox" :checked="isT" />钓鱼
+<!--v-model双向数据绑定-->	
+<input type="text"  v-model="sex" />
+<span v-text="sex" >
+	
+</span>
+<!--v-for 指令:遍历数组或者对象,同时DOM元素节点-->
+<ul>
+	<!--v是数组元素,i是下标-->
+	<li v-for="(v,i) in arrType">
+		<!--{{v}}----{{i}}-->
+		<span v-text="v">
+			----
+		</span>
+		<span v-text="i">
+			
+		</span>
+		
+		<button @click="rem(i)">删除</button>
+	</li>
+	<input type="text"  v-model="lidata" />
+</ul>
+<button @click="add()">增加</button>
+<button @click="del()">删除最后一个</button>
+
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript">
+		//创建一个vue实例对象
+//el属性作用是指定布局中的标签id,该id对应的标签内部的所有元素都可以被该实例控制,超出无效;
+//data属性  是用来提供数据源的;
+//methods 属性  为vue中实例对象设置方法--函数
+
+		var ve = new Vue({
+			el:"#app",
+			data:{
+				lidata:"CBA",
+				isT:false,
+				sex:"boy",
+				name:"王少伟",
+				arrType:["科技","娱乐","新闻","视频","音频"],
+				hobby:["足疗","开车","喝咖啡"],
+				OK:false,
+				baidu:'<a href="https://www.baidu.com">百度</a>',
+				a:"one"
+			},
+		methods:{
+			getScore:function(){
+				return 100;
+			},
+		getA:function(a){
+			return a+"hello";
+		    },
+		  getB(a){
+			return a+"垃圾!";
+		},
+		dianji(){
+			document.body.style.backgroundColor = "yellow"; 
+			//改变数据源的值,只要数据源发生改变,ve实例对象控制范围内使用过该数据源的地方都会发生重新渲染;
+			this.name = "潘坤";
+		},
+		add(){
+			this.arrType.push(this.lidata);
+		},
+		
+		del(){
+			this.arrType.pop();
+		},
+		rem(i){
+			this.arrType.splice(i,1);//splice(i,length),从i下标开始删除length个元素;
+		}
+		    
+		},
+		
+		});
+//	function random(m,n){
+//		return Math.floor(Math.random()*(n-m+1));
+//	};
+//		
+		
+	</script>
+</html>

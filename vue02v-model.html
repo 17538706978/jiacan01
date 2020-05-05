@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#p1{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+			#A,#B{
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				line-height: 200px;
+				margin-top: 30px;
+			}
+			#B{
+				background-color: orangered;
+			}
+			.c{
+				width: 600px;
+				height: 200px;
+				background-color: pink;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				line-height: 200px;
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<p v-text="msg"></p>
+			<button @click="changeMsg()">改变msg</button>
+			<input type="text"  v-model="msg" />
+			<!--商品总价-->
+			单价:<span v-text="price"></span>
+			<br />
+			数量:<button @click="changeMoney()">+</button>
+			<span v-text="count"></span>
+			<button @click="changeMoney2()">-</button>
+			<br />
+             总价:<span v-text="money"></span>		
+     <!--v-model指令双向数据绑定,用来input(text,password,radio,checkbox),select,texarea等表单元素上都可以双向使用-->
+     年龄:<select v-model="age">
+     	<option value="18">18</option>
+     	<option value="25">25</option>
+     	<option value="39">39</option>
+     	<option value="45">45</option>
+     	
+     </select>
+     <br />
+     年纪:<span v-text="age"></span>
+     <br />
+     <input type="radio" value="男" v-model="sex"/>男
+     <input type="radio" value="女" v-model="sex"/>女
+     <span v-text="sex"></span> 
+  <!--v-if 指令:用来根据表达式的结果是否为真,决定是否插入该节点-->  
+  <button @click="see = !see">显示/隐藏</button>
+    <p v-if="see" :id="ID">one</p>
+    <button @click="choose = true">126邮箱</button>
+    <button @click="choose = false">163邮箱</button>
+    <!--template最为一个临时容器相当于div-->
+    <template v-if="choose">
+    	 <div id="A">
+    	126邮箱
+    </div>
+    </template>
+    <template v-else>
+    	<div id="B">
+    	163邮箱
+    </div>
+    	
+    </template>
+ <!--v-if v-else v-else-if-->  
+   <button @click="haha=1">公告</button>
+   <button @click="haha =2" >规则</button>
+   <button @click="haha = 3">论坛</button>
+   <button @click="haha = 4">安全</button>
+   <div class="c" v-if="haha==1">
+   	公告
+   </div>
+   <div class="c" v-else-if="haha==2">
+   	规则
+   </div>
+   <div class="c" v-else-if="haha==3">
+   	论坛
+   </div>
+   <div class="c" v-else>
+   	安全
+   </div>
+   
+   
+   
+    
+		</div>
+		
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var ve = new Vue({
+			el:"#app",
+			data:{
+				msg:"hello",
+				price:9,
+				count:1,
+				money:9,
+				age:18,
+				sex:"男",
+				ID:"p1",
+				see:true,
+				choose:true,
+				haha:1
+				
+			},
+		    methods:{
+		    	changeMsg(){
+		    		this.msg = "垃圾";
+		    	},
+		    	changeMoney(){
+		    		this.count++;
+		    		this.money = this.price*this.count;
+		    	},
+		    	changeMoney2(){
+		    		this.count--;
+		    		if(this.count<=0){
+		    			this.count=0;
+		    		}
+		    		
+		    		this.money = this.price*this.count;
+		    	},
+		    	
+		    }
+			
+			
+		});
+		
+//v-show 和v-if功能一样,但前者更高效,确保属性值发生改变时,每次都会重新渲染.		
+	</script>
+</html>
