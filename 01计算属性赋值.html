@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p v-text="change"></p>
+			
+			
+			
+			
+		</div>
+		
+		
+	</body>
+<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var ve = new Vue({
+		el:"#app",
+		data:{
+			msg:"周灿"
+		},
+		computed:{
+	//默认只有	getter取值,如果需要,需要添加setter赋值;	
+			change:{
+		       //getter取值;
+		       get:function(){
+		       	return this.msg.split("").reverse().join("");
+		       },
+		      //setter赋值
+		      set:function(){
+		      	this.msg = "word";
+		      }
+			}
+		}
+	});
+	
+	ve.change = "123";
+	
+</script>
+
+</html>

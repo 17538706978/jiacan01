@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-text="price">
+				
+			</span><br />
+		<button @click="price++">改价</button>	
+			<ul>
+				<li v-text="v" v-for="(v,i) in names"></li>
+			</ul>
+			<input type="text" v-model="inpvalue" />
+			<button @click="addNames()">添加</button>	
+		<p v-text="stu.name"></p>
+		<p  v-text="stu.sex"></p>
+		<button @click="stuChange()">改变</button>	
+		
+		</div>
+		
+		
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var ve = new Vue({
+			el:"#app",
+			data:{
+				price:8,
+				names:["银辉","亚强","俊恒","周灿"],
+				inpvalue:"",
+				stu:{
+					name:"子龙",
+					age:22,
+					sex:"男"
+				}
+			},
+			watch:{
+				//监听基本数据类型
+				names:function(newV,oldV){
+					console.log(this.names);
+				  		
+				},
+//			  监听对象必须使用深度监听;
+             //第一种方式:
+//             stu:{
+//             	handler:function(){
+//             		console.log(this.stu);
+//             	},
+//             	deep:true
+//             }
+//				
+			},
+			methods:{
+				addNames(){
+					//更新渲染
+				 this.$set(this.names,this.names.length,this.inpvalue);
+				 this.inpvalue = "";//清空输入框;
+				},
+			stuChange(){
+				this.$set(this.stu,"name","少伟");
+			}
+				
+			}
+			
+			
+			
+		});
+//	第二种方式监听对象	
+   ve.$watch("stu",{
+   	deep:true,
+   	handler:function(){
+   		console.log("监听到了!");
+   	}
+   });
+		
+		
+	</script>
+</html>
