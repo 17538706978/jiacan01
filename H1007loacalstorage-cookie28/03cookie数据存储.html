@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="add">添加</button>
+		<button id="delete">删除</button>
+		<p id="p1"></p>
+	</body>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+// 		cookie的作用:
+// 		HTTP协议是一个无状态的协议,打开网页(一旦数据传输完成),客户端和服务端就会断开连接,再次请求,才会重新连接服务器;为了方便,我们把客户端的所有信息(账号,密码等等)都存储到cookie中,方便下次取值;
+// 		特点:
+// 		cookie的原理:存储的是一段文本信息,和localstorage一样,使用key和value存值,存储到浏览器中-本地;
+// 		1.cookie的存储数据大小不能超过4KB;
+// 		2.存储的数据具有时效性;
+// 		cookie的使用场景:
+// 		1.记录账号和密码;
+// 		2.记录一些用户信息;
+// 		3.电商平台中,添加购物车的商品信息;
+// 		cookie的弊端:
+// 		1.cookie存储的数据有内存大小限制;
+// 		2.cookie存储的数据可以被修改和删除;
+// 		3.cookie具有时效性,不能做数据持久化存储;
+       // 获取cookie
+	   // 不同的浏览器,使用不同的cookie
+	   // 添加的cookie的方式一:
+	   // document.cookie = "age=18";
+	   // document.cookie = "name=zhangcan";
+	   console.log(document.cookie);
+	   
+	   var addBtn = document.getElementById("add");
+	   // 第二种方式
+	   var nowTime;
+	   addBtn.onclick = function(){
+		   // 在此基础上,添加cookie的同时,添加失效时间
+		   // max-age 以秒为单位
+		   var t = 60 * 60 * 32;//在此基础上减去8个小时,就是东八区,北京时间
+		   document.cookie = "pw=234567;max-age=" + t;
+		   var t1 = 60 * 60 * 24 * 7 + 60 * 60 * 8;//七天之后
+		   document.cookie = "price=9.9;max-age=" + t1;
+		   // 添加cookie
+		   addCookie("count",18,60 * 60 * 10);
+		   addCookie("sex",escape("男性"),60 * 60 * 32);
+	   }
+	   
+	   var deleteBtn = document.getElementById("delete");
+	   deleteBtn.onclick = function(){
+		   // 删除cookie
+// 		   1.设置失效时间小于当前时间;一般设置为-1
+// 		   2.将键对应的键值置空;
+		   document.cookie = "price=;max-age=-1";
+		   
+		   deleteCookie("age");
+	   }
+	   
+	   var p1 = document.getElementById("p1");
+	   p1.innerHTML = getCookie("name");
+	   
+
+		
+	</script>
+</html>

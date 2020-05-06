@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p id="p1"></p>
+	</body>
+	<script type="text/javascript">
+		// 		localStorage 本地数据存储,数据持久化存储,是一个对象;
+		// 		通过键值来进行数据的增删改查;
+		// 		特点:
+		// 		1.数据持久化可以做到持久化存储,没有时间限制;
+		console.log(localStorage);
+		// 赋值
+		localStorage.sex = "girl";
+		localStorage.name = "周灿";
+		// 取值
+		var p1 = document.getElementById("p1");
+		p1.innerHTML = localStorage.name;
+		console.log(localStorage.length);
+		// var stu = {hobby:"拔罐",age:18};
+		// localStorage.message = stu;//失败
+		// p1.innerHTML = localStorage.message.hobby;
+		// 第二种方式:
+		localStorage.setItem("score", 99);
+		p1.innerHTML = localStorage.getItem("score");
+		// 删除localStorage
+		localStorage.name = ""; //置空 
+		// 删除键值对
+		localStorage.removeItem("score");
+		// 删除所有键值对
+		localStorage.clear();
+
+		localStorage.name = "明明";
+
+		var stu = {
+			hobby: "拔罐",
+			age: 18
+		};
+		
+		
+		console.log(stu);	
+		// stringify 将json对象([]{})转化正json字符串
+		var stu1 = JSON.stringify(stu);
+		console.log(stu1);
+		console.log(stu1[0]);
+		localStorage.message = stu1;
+		console.log(localStorage);
+		// json字符串转化成json对象
+		var obj = JSON.parse(localStorage.message);
+		console.log(obj.hobby);
+		var arr = [];
+		// arr.push()
+		arr = ["13849119257","13590987867"];
+		localStorage.users = JSON.stringify(arr);
+		console.log(localStorage);
+		console.log(JSON.parse(localStorage.users)[0]);
+		
+		
+		
+		
+		
+	</script>
+</html>

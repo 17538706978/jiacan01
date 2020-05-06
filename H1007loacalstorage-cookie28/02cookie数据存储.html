@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="add">添加</button>
+	</body>
+	<script type="text/javascript">
+// 		cookie的作用:
+// 		HTTP协议是一个无状态的协议,打开网页(一旦数据传输完成),客户端和服务端就会断开连接,再次请求,才会重新连接服务器;为了方便,我们把客户端的所有信息(账号,密码等等)都存储到cookie中,方便下次取值;
+// 		特点:
+// 		cookie的原理:存储的是一段文本信息,和localstorage一样,使用key和value存值,存储到浏览器中-本地;
+// 		1.cookie的存储数据大小不能超过4KB;
+// 		2.存储的数据具有时效性;
+// 		cookie的使用场景:
+// 		1.记录账号和密码;
+// 		2.记录一些用户信息;
+// 		3.电商平台中,添加购物车的商品信息;
+// 		cookie的弊端:
+// 		1.cookie存储的数据有内存大小限制;
+// 		2.cookie存储的数据可以被修改和删除;
+// 		3.cookie具有时效性,不能做数据持久化存储;
+       // 获取cookie
+	   // 不同的浏览器,使用不同的cookie
+	   // 添加的cookie的方式一:
+	   document.cookie = "age=18";
+	   document.cookie = "name=zhangcan";
+	   console.log(document.cookie);
+	   
+	   var addBtn = document.getElementById("add");
+	   // 第一种方式
+	   var nowTime;
+	   addBtn.onclick = function(){
+		   // 在此基础上,添加cookie的同时,添加失效时间
+		   nowTime = new Date();//当前时间
+		   // 设置一个新的时间,作为失效时间
+		   // nowTime.setHours(nowTime.getHours() + 6);//6个小时之后
+		   nowTime.setDate(nowTime.getDate() + 7);//七天以后失效
+		   console.log(nowTime);
+		   // 添加cookie
+		   document.cookie = "QQ=934993422;expires=" + nowTime.toString() + "secure=true";
+		   
+	   }
+	   
+	   
+
+		
+	</script>
+</html>
