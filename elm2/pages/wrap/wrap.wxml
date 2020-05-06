@@ -1,0 +1,33 @@
+<!--pages/wrap/wrap.wxml-->
+<view>
+<view class="body1">
+  <text class="p1">当前定位城市：</text>
+  <text class="p2">定位不准时，请在城市列表中选择</text>
+</view>
+  
+   <view class="body2" bindtap="clickNext" data-arrobj="{{Gus}}">
+       <text class="dingwei">{{Gus.name}}</text>
+       <text class="jiantou">></text>
+   </view>
+   
+   <view class="body3"></view>
+   
+   <view class="body4">
+  
+      <view class="renmen" wx:for="{{Hot}}" wx:key="index" bindtap="clickNext" data-arrobj="{{item}}">
+         {{item.name}}
+      </view>
+     
+   </view>
+   <view class="body3"></view>
+   <!-- 所有城市 -->
+   <view class="body5" wx:for="{{groups}}" wx:for-index="k" wx:for-item="value" wx:key="k">
+   <view class="text1">{{k}} (按字母排序)</view>
+   
+   <view class="vies" wx:for="{{value}}" wx:key="index" bindtap="clickNext" data-arrobj="{{item}}">
+   {{item.name}}
+   </view>
+  
+    </view>
+   
+</view>

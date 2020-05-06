@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/wrap/wrap",
+    "pages/shousuo/shousuo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

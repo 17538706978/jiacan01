@@ -1,0 +1,89 @@
+/* pages/wrap/wrap.wxss */
+.body1{
+  position: relative;
+  width: 750rpx;
+  height: 80rpx;
+  border-bottom: 1rpx solid gainsboro;
+  line-height: 80rpx;
+}
+.p1{
+  font-size: 30rpx;
+  color: #666666;
+  margin-left: 20rpx;
+}
+.p2{
+  font-size: 25rpx;
+  position: absolute;
+  right: 20rpx;
+  color: #9f9f9f;
+}
+.body2{
+  width: 750rpx;
+  height: 80rpx;
+  border-bottom: 1rpx solid gainsboro;
+  position: relative;
+  line-height: 80rpx;
+  
+}
+.dingwei{
+  position: absolute;
+  left: 30rpx;
+  color: #1E90FF;
+  font-size: 35rpx;
+}
+.jiantou{
+  position: absolute;
+  right: 20rpx;
+  font-size: 40rpx;
+  color: gray;
+}
+.body3{
+  width: 750rpx;
+  height: 20rpx;
+  background-color: #F5F5F5;
+}
+.body4{
+  width: 750rpx;
+  height: 160rpx;
+  /* border: 1px solid red; */
+}
+.renmen{
+  width: 185.9rpx;
+  height: 79rpx;
+  border-bottom: 1px solid gainsboro;
+  border-left: 1px solid gainsboro;
+  float: left;
+  text-align: center;
+  line-height: 80rpx;
+  color: #1E90FF;
+  font-size: 30rpx;
+}
+.body5{
+  width: 750rpx;
+}
+.text1{
+  width: 750rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding-left: 20rpx;
+  font-size: 20rpx;
+  color: #9f9f9f;
+  overflow: hidden;
+  border-bottom: 1px solid gainsboro;
+}
+.vies{
+  width: 185rpx;
+  height: 79rpx;
+  float: left;
+  font-size: 25rpx;
+  margin-left: 1rpx;
+  border-bottom: 1px solid gainsboro;
+  /* border-left: 1px solid gainsboro; */
+  border-right: 1px solid gainsboro;
+  text-align: center;
+  line-height: 79rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #666666;
+}
